@@ -93,12 +93,14 @@ artifacts {
     archives sourcesJar
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def binUser = hasProperty('bintray.user') ? blahUser : System.getenv('bintray.user')
+def binApi = hasProperty('bintray.apikey') ? blahPwd : System.getenv('bintray.apikey')
+def binPwd = hasProperty('bintray.gpg.password') ? blahPwd : System.getenv('bintray.gpg.password')
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = binUser
+    key = binApi
 
     configurations = ['archives']
     pkg {
@@ -112,7 +114,7 @@ bintray {
         version {
             gpg {
                 sign = true
-                passphrase = properties.getProperty("bintray.gpg.password")
+                passphrase = binPwd
             }
         }
     }
