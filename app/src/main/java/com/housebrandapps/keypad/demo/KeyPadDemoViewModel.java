@@ -1,8 +1,4 @@
-package com.housebrandapps.keypad;
-
-/**
- * Created by natieklopper on 2017/10/19.
- */
+package com.housebrandapps.keypad.demo;
 
 public class KeyPadDemoViewModel {
 

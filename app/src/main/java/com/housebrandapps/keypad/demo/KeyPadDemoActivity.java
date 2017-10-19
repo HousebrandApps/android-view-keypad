@@ -1,4 +1,4 @@
-package com.housebrandapps.keypad;
+package com.housebrandapps.keypad.demo;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.housebrandapps.keypad.databinding.ActivityKeyPadDemoBinding;
+import com.housebrandapps.keypad.demo.databinding.ActivityKeyPadDemoBinding;
+
 
 public class KeyPadDemoActivity extends AppCompatActivity implements KeyPadDemoViewModel.KeyPadDemoView {
 

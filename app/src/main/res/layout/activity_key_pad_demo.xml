@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.housebrandapps.keypad.KeyPadDemoViewModel" />
+            type="com.housebrandapps.keypad.demo.KeyPadDemoViewModel" />
     </data>
 
     <RelativeLayout

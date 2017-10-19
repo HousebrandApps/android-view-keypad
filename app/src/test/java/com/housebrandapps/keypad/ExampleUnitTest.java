@@ -1,5 +1,7 @@
 package com.housebrandapps.keypad;
 
+import com.housebrandapps.keypad.demo.KeyPadDemoViewModel;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
