@@ -20,6 +20,10 @@ android:
   - extra-google-m2repository
   - extra-android-support
   - addon-google_apis-google-19
+  licenses:
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
 script: "./gradlew clean assembleRelease bintrayUpload"
 
 before_cache:
