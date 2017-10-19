@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">KeyPad</string>
+
+    <declare-styleable name="KeyPadLayout">
+        <attr name="total_displays" format="integer"/>
+        <attr name="button_style" format="reference"/>
+        <attr name="button_item_padding" format="dimension"/>
+        <attr name="button_item_ok_name" format="string"/>
+        <attr name="button_item_clear_name" format="string"/>
+        <attr name="display_item_padding" format="dimension"/>
+        <attr name="display_text_color" format="color"/>
+        <attr name="display_text_size" format="dimension"/>
+        <attr name="display_background" format="reference"/>
+    </declare-styleable>
+
+    <string-array name="buttons">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>X</item>
+        <item>0</item>
+        <item>OK</item>
+    </string-array>
+
+    <dimen name="key_pad_padding">16dp</dimen>
+    <dimen name="key_pad_text_size">22sp</dimen>
+
+    <!--Overide this Layout in your app and make changes when re-applying it back onto the layout-->
+    <style name="KeyPadDisplayTheme" parent="@android:style/Widget.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">@dimen/key_pad_padding</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:imeActionLabel">Next</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:background">@drawable/key_pad_rounded_square</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="KeyPadButtonTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:imeActionLabel">Next</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:background">@drawable/key_pad_rounded_square</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
