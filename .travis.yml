@@ -12,7 +12,20 @@ android:
   components:
   - tools
   - platform-tools
+  - tools
   - build-tools-26.0.2
   - android-26
   - extra-android-m2repository
+  - extra-google-m2repository
+  - extra-android-support
 script: "./gradlew clean assembleRelease bintrayUpload"
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
