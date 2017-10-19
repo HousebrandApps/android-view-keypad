@@ -94,17 +94,17 @@ artifacts {
 }
 
 
-def binUser = hasProperty('bintray.user') ? blahUser : System.getenv('bintray.user')
-def binApi = hasProperty('bintray.apikey') ? blahPwd : System.getenv('bintray.apikey')
-def binPwd = hasProperty('bintray.gpg.password') ? blahPwd : System.getenv('bintray.gpg.password')
-
 bintray {
+    def binUser = hasProperty('bintrayuser') ? binUser : System.getenv('bintrayuser')
+    def binApi = hasProperty('bintrayapikey') ? binApi : System.getenv('bintrayapikey')
+    def binPwd = hasProperty('bintraygpgpassword') ? binPwd : System.getenv('bintraygpgpassword')
+
     user = binUser
     key = binApi
 
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = "android-view-keypad"
 
         name = "com.housebrandapps:android-view-keypad"
         websiteUrl = siteUrl
