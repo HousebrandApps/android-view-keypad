@@ -169,6 +169,7 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
 
             KeyPadViewHolder(Button itemView) {
                 super(itemView);
+                itemView.setGravity(Gravity.CENTER);
                 itemView.setOnClickListener(this);
             }
 

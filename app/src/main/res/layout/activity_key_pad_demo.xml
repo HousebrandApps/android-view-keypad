@@ -11,10 +11,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/background_dark">
 
         <com.housebrandapps.keypad.KeyPadLayout
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/key_pad_default_width"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:onOkayClicked="@{(view, value) -> viewModel.onOkay(value)}" />
