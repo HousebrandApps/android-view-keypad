@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:keypad="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.housebrandapps.keypad.demo.KeyPadDemoViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_dark">
+
+        <com.housebrandapps.keypad.KeyPadLayout
+            android:layout_width="@dimen/key_pad_default_width"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            keypad:display_item_hide="false"
+            keypad:button_item_ok_name="GO"
+            keypad:button_item_clear_name="CLR"
+            keypad:button_item_padding="2dp"
+            keypad:button_inner_padding="20dp"
+            keypad:button_background="@android:drawable/dialog_holo_light_frame"
+            keypad:button_text_color="@android:color/black"
+            keypad:display_background="@drawable/lcd_screen"
+            keypad:display_text_color="@android:color/black"
+            keypad:onOkayClicked="@{(view, value) -> viewModel.onOkay(value)}" />
+
+    </RelativeLayout>
+</layout>

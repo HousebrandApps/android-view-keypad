@@ -3,10 +3,13 @@
 
     <declare-styleable name="KeyPadLayout">
         <attr name="total_displays" format="integer" />
-        <attr name="button_style" format="reference" />
+        <attr name="button_background" format="reference" />
+        <attr name="button_text_color" format="color" />
         <attr name="button_item_padding" format="dimension" />
+        <attr name="button_inner_padding" format="dimension" />
         <attr name="button_item_ok_name" format="string" />
         <attr name="button_item_clear_name" format="string" />
+        <attr name="display_item_hide" format="boolean" />
         <attr name="display_item_padding" format="dimension" />
         <attr name="display_text_color" format="color" />
         <attr name="display_text_size" format="dimension" />
