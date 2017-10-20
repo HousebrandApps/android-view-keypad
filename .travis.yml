@@ -35,7 +35,7 @@ deploy:
   provider: releases
   api_key:
     secure: TPF19h6DTIctjVPYnlEWEjT7CYXMEVc3hxl1TN+c47j29BMy9o5E6kUylXvr9OyUvv8JTM2O2gjCf6wYHvlDAZjjVKKQ27DxBVinQZTqeb7FOAvTFdjSJcBvdLPms+9uUPJkqFKGP5ILNNE/pShMv5d/B1I3eH/RgR2qxzIlp9ySTawyqTzDy29qqN0U9WqhlXxl6psJoOIzxVHFdakmc/u03JSTaHz66Kae8S5qkYjA8XPYskYgVDJ7YDGrKPWmc2fEytKinp4AEXi+kSK1/v9tINaJGASJKpWVAGSM9HxOOvrOtwnTATzi5b6I/bnqhGOfjIbTgmTKnRm817xarZDNQcU2l515mbfw/zU08UweT0rS+TDehlqd0aVwc/gr8XawAslwg4oOVeK+Tm6HIeo57KLctfR0mHL+Y0nulFn+z4s1SYCvE7EvkNfWfmf5HfbvjY6oSh/yIrYrAOJ1Liiys2aO31AkaJZjoAM4DKNmqW0L4T/BE9/SMRVBhomuGfxV5Ude20RR8FxUJ3Ls4/dl21+n/1iZHc1KKcwmaICQB8C7fht4uxN22YurWFJSnxYbZcaHwBdcxxK76pjhoRIBWNvWMfCQrQin10/p7iVAVdPc26gNPnjxwZKosIaqYhf2l4J/tQ7ot6xhP94ChkrtPwLiAG7J+PvzeDbpgBk=
-  file: keypad/android-view-keypad/app/build/outputs/apk/release/*release*.apk
+  file: keypad/android-view-keypad/app/build/outputs/apk/release/**.apk
   file_glob: "true"
   skip_cleanup: true
   on:
