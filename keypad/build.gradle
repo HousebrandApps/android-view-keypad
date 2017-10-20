@@ -1,18 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: "com.jfrog.bintray"
+apply plugin: 'maven'
 
-version = "1.0.1"
+version = "1.0.3"
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
 
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 26
-        versionCode 4
-        versionName "1.0.1"
+        versionCode 5
+        versionName "" + version
     }
 
     buildTypes {
@@ -20,6 +21,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     dataBinding {
@@ -34,6 +39,26 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.10.0'
+}
+
+task createPom << {
+    pom {
+        project {
+            groupId 'com.housebrandapps'
+            artifactId 'android-view-keypad'
+            version = version
+
+            inceptionYear '2017'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'android-view-keypad'
+                }
+            }
+        }
+    }.writeTo("$projectDir/build/outputs/aar/pom.xml")
+
 }
 
 
@@ -93,14 +118,17 @@ artifacts {
     archives sourcesJar
 }
 
+def prop = new Properties()
+file("../my.properties").withInputStream { prop.load(it) }
+
+task printProps << {
+    println prop.getProperty('apiKey')
+    println prop.getProperty('user')
+}
 
 bintray {
-    def binUser = hasProperty('bintrayuser') ? binUser : System.getenv('bintrayuser')
-    def binApi = hasProperty('bintrayapikey') ? binApi : System.getenv('bintrayapikey')
-    def binPwd = hasProperty('bintraygpgpassword') ? binPwd : System.getenv('bintraygpgpassword')
-
-    user = binUser
-    key = binApi
+    user = prop.getProperty('apiKey')
+    key = prop.getProperty('user')
 
     configurations = ['archives']
     pkg {
@@ -114,7 +142,7 @@ bintray {
         version {
             gpg {
                 sign = true
-                passphrase = binPwd
+                passphrase = prop.getProperty('bintraygpgpassword')
             }
         }
     }
