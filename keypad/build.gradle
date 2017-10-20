@@ -41,24 +41,25 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.10.0'
 }
 
-task createPom << {
-    pom {
-        project {
-            groupId 'com.housebrandapps'
-            artifactId 'android-view-keypad'
-            version = version
+task createPom {
+    doLast {
+        pom {
+            project {
+                groupId 'com.housebrandapps'
+                artifactId 'android-view-keypad'
+                version = version
 
-            inceptionYear '2017'
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'android-view-keypad'
+                inceptionYear '2017'
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'android-view-keypad'
+                    }
                 }
             }
-        }
-    }.writeTo("$projectDir/build/outputs/aar/pom.xml")
-
+        }.writeTo("$projectDir/build/outputs/aar/pom.xml")
+    }
 }
 
 
@@ -120,11 +121,6 @@ artifacts {
 
 def prop = new Properties()
 file("../my.properties").withInputStream { prop.load(it) }
-
-task printProps << {
-    println prop.getProperty('apiKey')
-    println prop.getProperty('user')
-}
 
 bintray {
     user = prop.getProperty('apiKey')
