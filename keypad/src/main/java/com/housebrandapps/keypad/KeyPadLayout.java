@@ -130,18 +130,20 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
         private final String[] buttonLabels;
         private int background;
         private int innerPadding;
+        private float textSize;
 
         KeyPadAdapter(Context context, TypedArray ta, String... labels) {
             this.context = context;
             this.buttonLabels = labels;
             this.background = ta.getResourceId(R.styleable.KeyPadLayout_button_background, 0);
-            this.innerPadding = ta.getDimensionPixelSize(R.styleable.KeyPadLayout_button_inner_padding,
-                    context.getResources().getDimensionPixelSize(R.dimen.key_pad_padding));
+            this.textSize = ta.getDimensionPixelSize(R.styleable.KeyPadLayout_button_text_size, context.getResources().getDimensionPixelSize(R.dimen.key_pad_text_size));
+            this.innerPadding = ta.getDimensionPixelSize(R.styleable.KeyPadLayout_button_inner_padding, context.getResources().getDimensionPixelSize(R.dimen.key_pad_padding));
         }
 
         @Override
         public KeyPadViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
             Button button = new Button(context);
+            button.setTextSize(textSize);
             if (background != 0)
                 button.setBackground(ContextCompat.getDrawable(viewGroup.getContext(), background));
             button.setPadding(innerPadding, innerPadding, innerPadding, innerPadding);
