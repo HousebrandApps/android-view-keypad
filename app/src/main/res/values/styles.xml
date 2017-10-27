@@ -1,21 +1,35 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">#bf0010</item>
+        <item name="colorControlActivated">#2988da</item>
+        <item name="colorControlHighlight">#27f17e</item>
+        <item name="android:textColorPrimary">#a1006b</item>
+
+        <item name="android:windowBackground">@color/background</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:editTextStyle">@style/KeyPadButtonTheme</item>
         <item name="android:buttonStyle">@style/KeyPadButtonTheme</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="KeyPadButtonTheme" parent="Base.Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">@dimen/key_pad_padding</item>
+        <item name="android:textSize">@dimen/key_pad_text_size</item>
+        <item name="android:background">@drawable/key_pad_rounded_square</item>
+        <item name="android:textStyle">bold</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

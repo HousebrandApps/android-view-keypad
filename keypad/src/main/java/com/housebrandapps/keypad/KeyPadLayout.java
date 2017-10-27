@@ -26,11 +26,6 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
     private DisplayLayout displayLayout;
     private KeypadOkayClickedListener okayClickedListener;
 
-    private KeyPadLayout(Context context) {
-        super(context);
-        init(null);
-    }
-
     public KeyPadLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
@@ -134,14 +129,12 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
         private ItemClickListener mClickListener;
         private final String[] buttonLabels;
         private int background;
-        private int textColor;
         private int innerPadding;
 
         KeyPadAdapter(Context context, TypedArray ta, String... labels) {
             this.context = context;
             this.buttonLabels = labels;
-            this.background = ta.getResourceId(R.styleable.KeyPadLayout_button_background, R.drawable.key_pad_rounded_square);
-            this.textColor = ta.getResourceId(R.styleable.KeyPadLayout_button_text_color, android.R.color.white);
+            this.background = ta.getResourceId(R.styleable.KeyPadLayout_button_background, 0);
             this.innerPadding = ta.getDimensionPixelSize(R.styleable.KeyPadLayout_button_inner_padding,
                     context.getResources().getDimensionPixelSize(R.dimen.key_pad_padding));
         }
@@ -149,8 +142,8 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
         @Override
         public KeyPadViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
             Button button = new Button(context);
-            button.setBackground(viewGroup.getContext().getResources().getDrawable(background));
-            button.setTextColor(viewGroup.getContext().getResources().getColor(textColor));
+            if (background != 0)
+                button.setBackground(ContextCompat.getDrawable(viewGroup.getContext(), background));
             button.setPadding(innerPadding, innerPadding, innerPadding, innerPadding);
             return new KeyPadViewHolder(button);
         }
@@ -215,8 +208,7 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
 
             int padding = ta.getDimensionPixelSize(R.styleable.KeyPadLayout_display_item_padding, getResources().getDimensionPixelSize(R.dimen.key_pad_padding));
             int textSize = ta.getDimensionPixelSize(R.styleable.KeyPadLayout_display_text_size, getResources().getDimensionPixelSize(R.dimen.key_pad_text_size));
-            int colorId = ta.getColor(R.styleable.KeyPadLayout_display_text_color, getResources().getColor(android.R.color.white));
-            int backgroundId = ta.getResourceId(R.styleable.KeyPadLayout_display_background, R.drawable.key_pad_rounded_square);
+            int backgroundId = ta.getResourceId(R.styleable.KeyPadLayout_display_background, 0);
             boolean hideEntries = ta.getBoolean(R.styleable.KeyPadLayout_display_item_hide, true);
 
             int paddingHalf = (int) (padding / 2f);
@@ -237,13 +229,14 @@ public class KeyPadLayout extends LinearLayout implements KeyPadViewModel.KeyPad
                         1f);
 
                 entry[i] = new EditText(getContext());
-                entry[i].setTextColor(colorId);
-                if (hideEntries)
+                if (hideEntries) {
                     entry[i].setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
                 entry[i].setFocusable(false);
                 entry[i].setTextIsSelectable(false);
                 entry[i].setTextSize(textSize);
-                entry[i].setBackground(ContextCompat.getDrawable(getContext(), backgroundId));
+                if (backgroundId != 0)
+                    entry[i].setBackground(ContextCompat.getDrawable(getContext(), backgroundId));
                 entry[i].setGravity(Gravity.CENTER);
                 layoutParams.setMarginStart(padding);
                 layoutParams.setMarginEnd(padding);
